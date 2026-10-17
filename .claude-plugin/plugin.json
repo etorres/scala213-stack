@@ -1,0 +1,21 @@
+{
+  "name": "scala213-stack",
+  "version": "0.1.0",
+  "description": "Agentic development for Scala 2.13 + sbt projects using Metals MCP, Cellar and Orca (VirtusLab Scala Stack tools adapted to Scala 2.13).",
+  "author": {
+    "name": "Erik Torres",
+    "email": "etserrano@gmail.com"
+  },
+  "keywords": [
+    "scala",
+    "scala-2.13",
+    "sbt",
+    "metals",
+    "mcp",
+    "cellar",
+    "orca"
+  ],
+  "homepage": "https://github.com/etorres/scala213-stack",
+  "repository": "https://github.com/etorres/scala213-stack",
+  "license": "Apache-2.0"
+}

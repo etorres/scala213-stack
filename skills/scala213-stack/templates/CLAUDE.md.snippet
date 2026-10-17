@@ -1,0 +1,13 @@
+## Scala 2.13 / sbt tooling
+
+This is a Scala 2.13 project built with sbt 1.x. Do not use Scala 3 syntax unless `-Xsource:3`
+is in scalacOptions, and keep the effect/concurrency style already used in the code.
+
+- If the `scala213-stack` skill is available, load it before working on Scala code.
+- If the `metals` MCP server is available, use it to compile (`compile-file`, `compile-module`),
+  test (`test`), navigate (`glob-search`, `inspect` with `fileInFocus`, `get-usages`) and format (`format-file`).
+  Run `import-build` after editing the build.
+- If `cellar` is available, look up dependency APIs with it (`cellar get --module <proj> <fqn>`,
+  `cellar get-external <group>:<artifact>_2.13:<version> <fqn>`) instead of guessing signatures.
+- Before finishing: `sbt <affected modules>/Test/compile` with no new warnings, affected tests green,
+  and changed files formatted.

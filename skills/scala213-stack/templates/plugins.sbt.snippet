@@ -1,0 +1,17 @@
+// project/plugins.sbt — only add what the project is missing; keep existing pins.
+// Versions as of 2026-10-17. Re-check before adding:
+//   cs complete-dep ch.epfl.scala:sbt-bloop_2.12_1.0:
+//   (or Metals find-dep with organization/name)
+
+// Build server used by Metals MCP (Metals usually injects it via project/metals.sbt)
+addSbtPlugin("ch.epfl.scala" % "sbt-bloop" % "2.1.2")
+
+// Formatting: enables `scalafmtAll`, `scalafmtCheckAll` (used by Orca's `format` gate)
+addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.6.2")
+
+// Linting and rewrites: enables `scalafix`, `scalafixAll`
+addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.14.9")
+
+// And in build.sbt, for scalafix semantic rules:
+//   ThisBuild / semanticdbEnabled := true
+//   ThisBuild / semanticdbVersion := scalafixSemanticdb.revision

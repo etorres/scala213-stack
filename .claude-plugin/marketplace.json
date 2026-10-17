@@ -1,0 +1,16 @@
+{
+  "name": "scala213-stack",
+  "description": "Claude Code skills for agentic Scala 2.13 + sbt development (Metals MCP, Cellar, Orca).",
+  "owner": {
+    "name": "Erik Torres",
+    "email": "etserrano@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "scala213-stack",
+      "source": "./",
+      "description": "Metals MCP, Cellar and Orca workflows for Scala 2.13 + sbt projects.",
+      "version": "0.1.0"
+    }
+  ]
+}
