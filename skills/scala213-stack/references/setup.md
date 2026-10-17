@@ -4,6 +4,11 @@
 > Orca 0.2.0, sbt-bloop 2.1.2, sbt 1.13.0, Scala 2.13.18. Run `scripts/doctor.sh` to see what
 > is actually installed. Never install or upgrade tools without asking the user first.
 
+Paths: `scripts/...` and `templates/...` are relative to the skill folder. Claude knows that folder
+once the skill is loaded. In a terminal, set `$S` to it first. For a plugin install:
+`S=$(ls -d ~/.claude/plugins/cache/scala213-stack/scala213-stack/*/skills/scala213-stack | sort -V | tail -n 1)`.
+Run every command from the sbt project root.
+
 ## 0. Prerequisites
 
 - JDK 17+ (JDK 21 recommended; Orca runs its own JVM 21 through scala-cli).
@@ -97,8 +102,8 @@ Per project, copy the templates:
 
 ```bash
 mkdir -p .orca/reviewers
-cp <skill>/templates/orca/settings.properties   .orca/settings.properties
-cp <skill>/templates/orca/reviewers/*.md         .orca/reviewers/
+cp "$S/templates/orca/settings.properties"   .orca/settings.properties
+cp "$S/templates/orca/reviewers/"*.md         .orca/reviewers/
 ```
 
 Optional: the upstream Claude Code skill (`/orca`):

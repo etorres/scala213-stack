@@ -23,13 +23,35 @@ system: agents follow whatever the project already uses.
 
 Or copy `skills/scala213-stack/` into `~/.claude/skills/` or `<project>/.claude/skills/`.
 
-Then follow [setup.md](skills/scala213-stack/references/setup.md) to install the tools, and from the sbt
-project root run:
+Then follow [setup.md](skills/scala213-stack/references/setup.md) to install the tools.
+
+### Running the scripts and copying templates
+
+The easiest way is to ask Claude from your sbt project, e.g. *"run the scala213-stack doctor"* or
+*"start the Metals MCP server with the scala213-stack script"*. Once the skill is loaded, Claude knows
+its own folder, so you don't need any paths.
+
+To run them yourself, find the skill folder first. A plugin install lives in Claude Code's plugin
+cache, under a versioned folder (`.../scala213-stack/<version>/...`). This lookup always picks the
+newest installed version:
 
 ```bash
-<skill-dir>/scripts/doctor.sh             # read-only check of tools + project config
-<skill-dir>/scripts/start-metals-mcp.sh   # Metals MCP on port 7333, writes .mcp.json
+S=$(ls -d ~/.claude/plugins/cache/scala213-stack/scala213-stack/*/skills/scala213-stack | sort -V | tail -n 1)
 ```
+
+If you copied the skill manually instead, use that folder:
+`S=~/.claude/skills/scala213-stack` or `S=<project>/.claude/skills/scala213-stack`.
+
+Then, from the sbt project root:
+
+```bash
+"$S/scripts/doctor.sh"              # read-only check of tools + project config
+"$S/scripts/start-metals-mcp.sh"    # in a separate terminal: Metals MCP on port 7333, writes .mcp.json
+mkdir -p .cellar && cp "$S/templates/cellar.conf" .cellar/cellar.conf   # optional templates, see setup.md
+```
+
+`~/.claude/plugins/marketplaces/scala213-stack/` also exists. It is Claude Code's clone of this repo, used
+to check for updates. Use the cache folder above, which is the copy that is actually installed.
 
 ### Optional companion plugins
 
